@@ -1,7 +1,4 @@
-package main.java.ca.nl.cna.java2.exercise;
-
-import org.w3c.dom.css.Rect;
-import org.w3c.dom.ls.LSOutput;
+package main.java.ca.nl.cna.java2.exercise.ex1_shapes;
 
 public class Test {
 
@@ -18,5 +15,15 @@ public class Test {
         ShapeGenerator shapeGenerator = new ShapeGenerator();
         Shape myShape = shapeGenerator.generateRandomShape();
         System.out.println(myShape.getDescription());
+
+        Shape[] shapes = new Shape[5];
+
+        int num = 0;
+        for(Shape shape : shapes){
+            shape = shapeGenerator.generateRandomShape();
+            shapes[num] = shape;
+            num++;
+            System.out.println(shape.getDescription());
+        }
     }
 }

@@ -1,5 +1,7 @@
 package main.java.ca.nl.cna.java2.exercise;
 
+import main.java.ca.nl.cna.java2.exercise.ex1_shapes.Circle;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CircleTest {

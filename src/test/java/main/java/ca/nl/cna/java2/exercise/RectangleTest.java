@@ -1,5 +1,6 @@
 package main.java.ca.nl.cna.java2.exercise;
 
+import main.java.ca.nl.cna.java2.exercise.ex1_shapes.Rectangle;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
