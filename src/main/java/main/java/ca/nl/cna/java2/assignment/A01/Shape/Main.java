@@ -1,4 +1,4 @@
-package main.java.ca.nl.cna.java2.assignment.A01;
+package main.java.ca.nl.cna.java2.assignment.A01.Shape;
 
 public class Main {
     public static void main(String[] args) {

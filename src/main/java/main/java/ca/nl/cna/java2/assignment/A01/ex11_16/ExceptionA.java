@@ -1,4 +1,4 @@
-package main.java.ca.nl.cna.java2.assignment.A01;
+package main.java.ca.nl.cna.java2.assignment.A01.ex11_16;
 
 //3. 11.16 (Catching Exceptions with Superclasses) Use inheritance to create
 //an exception superclass (called ExceptionA) and exception subclasses
@@ -7,5 +7,9 @@ package main.java.ca.nl.cna.java2.assignment.A01;
 //program to demonstrate that the catch block for type ExceptionA
 //catches exceptions of types ExceptionB and ExceptionC.
 
-public class ex11_16 {
+public class ExceptionA extends Exception {
+
+    public ExceptionA(String msg){
+        super("Exception A");
+    }
 }

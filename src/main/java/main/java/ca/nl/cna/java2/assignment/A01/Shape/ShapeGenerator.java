@@ -1,4 +1,4 @@
-package main.java.ca.nl.cna.java2.assignment.A01;
+package main.java.ca.nl.cna.java2.assignment.A01.Shape;
 
 import java.util.Random;
 

@@ -1,6 +1,6 @@
-package main.java.ca.nl.cna.java2.assignment.A01;
+package main.java.ca.nl.cna.java2.assignment.A01.Shape;
 
-public class Circle extends Shape{
+public class Circle extends Shape {
     private Double radius;
 
     public Circle(Double radius) throws InvalidShapeParameterException {

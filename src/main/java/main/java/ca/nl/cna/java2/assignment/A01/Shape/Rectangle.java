@@ -1,6 +1,6 @@
-package main.java.ca.nl.cna.java2.assignment.A01;
+package main.java.ca.nl.cna.java2.assignment.A01.Shape;
 
-public class Rectangle extends Shape{
+public class Rectangle extends Shape {
 
     private double length;
     private double width;

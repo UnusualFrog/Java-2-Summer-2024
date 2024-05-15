@@ -1,4 +1,4 @@
-package main.java.ca.nl.cna.java2.assignment.A01;
+package main.java.ca.nl.cna.java2.assignment.A01.ex11_20;
 
 //11.20 (Rethrowing Exceptions) Write a program that illustrates
 //rethrowing an exception. Define methods someMethod and
