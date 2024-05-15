@@ -8,4 +8,16 @@ package main.java.ca.nl.cna.java2.assignment.A01.ex11_20;
 //catch the rethrown exception. Print the stack trace of this exception.
 
 public class ex11_20 {
+
+    private void someMethod() throws Exception {
+        try {
+            someMethod2();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    private void someMethod2() throws Exception {
+        throw new Exception("someMethod2");
+    }
 }
