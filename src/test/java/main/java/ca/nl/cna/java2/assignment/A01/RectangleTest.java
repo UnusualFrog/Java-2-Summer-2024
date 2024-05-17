@@ -1,5 +1,7 @@
 package main.java.ca.nl.cna.java2.assignment.A01;
 
+import main.java.ca.nl.cna.java2.assignment.A01.Shape.InvalidShapeParameterException;
+import main.java.ca.nl.cna.java2.assignment.A01.Shape.Rectangle;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
