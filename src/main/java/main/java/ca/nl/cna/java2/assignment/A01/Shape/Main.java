@@ -8,12 +8,13 @@ public class Main {
         for (Shape shape : shapes) {
             try {
                 shape = ShapeGenerator.generateShape();
+                shapes[num] = shape;
+                num++;
             } catch (Exception e) {
                 System.out.println(e);
             }
 
-            shapes[num] = shape;
-            num++;
+
             System.out.println(shape.getDescription());
         }
     }

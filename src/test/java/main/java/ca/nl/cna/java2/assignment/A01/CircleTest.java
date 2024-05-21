@@ -9,25 +9,22 @@ import static org.junit.jupiter.api.Assertions.*;
 class CircleTest {
 
     @Test
-    void createCircle(){
+    void createInvalidCircle(){
         assertThrows(InvalidShapeParameterException.class, () -> {
            Circle circle = new Circle(-20.0);
         });
     }
 
     @Test
-    void getRadius() {
-    }
+    void createValidCircle(){
+        Circle circle = null;
+        try {
+            circle = new Circle(5.5);
+        }catch (InvalidShapeParameterException e) {
+            System.out.println(e);
+        }
 
-    @Test
-    void setRadius() {
-    }
+        assertNotNull(circle);
 
-    @Test
-    void area() {
-    }
-
-    @Test
-    void getDescription() {
     }
 }

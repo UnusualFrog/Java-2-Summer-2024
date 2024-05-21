@@ -9,33 +9,35 @@ import static org.junit.jupiter.api.Assertions.*;
 class RectangleTest {
 
     @Test
-    void createRectangle(){
+    void createInvalidRectangle(){
+        // First negative
+        assertThrows(InvalidShapeParameterException.class, () -> {
+            Rectangle rect = new Rectangle(-20.0, 10.1);
+        });
+
+        // Last negative
+        assertThrows(InvalidShapeParameterException.class, () -> {
+            Rectangle rect = new Rectangle(20.0, -10.1);
+        });
+
+        // Both negative
         assertThrows(InvalidShapeParameterException.class, () -> {
             Rectangle rect = new Rectangle(-20.0, -10.1);
         });
     }
 
     @Test
-    void getLength() {
+    void createValidRectangle() {
+        Rectangle rectangle = null;
+
+        try{
+            rectangle = new Rectangle(10.0, 5.2);
+        }
+        catch (InvalidShapeParameterException e) {
+            System.err.println(e);
+        }
+
+        assertNotNull(rectangle);
     }
 
-    @Test
-    void setLength() {
-    }
-
-    @Test
-    void getWidth() {
-    }
-
-    @Test
-    void setWidth() {
-    }
-
-    @Test
-    void area() {
-    }
-
-    @Test
-    void getDescription() {
-    }
 }
