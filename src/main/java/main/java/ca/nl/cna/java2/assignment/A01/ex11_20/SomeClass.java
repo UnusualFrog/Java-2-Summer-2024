@@ -8,25 +8,23 @@ package main.java.ca.nl.cna.java2.assignment.A01.ex11_20;
 //catch the rethrown exception. Print the stack trace of this exception.
 
 public class SomeClass {
-    public void someMethod() throws Exception {
+    public static void someMethod() throws Exception {
         try {
             someMethod2();
         } catch (Exception e) {
-            e.printStackTrace();
             throw e;
         }
     }
 
-    public void someMethod2() throws Exception {
+    public static void someMethod2() throws Exception {
         throw new Exception("someMethod2");
     }
 
     public static void main(String[] args) {
-        SomeClass someClass = new SomeClass();
         try {
-            someClass.someMethod();
+            SomeClass.someMethod();
         } catch (Exception e) {
-            System.err.println(e);
+            e.printStackTrace();
         }
 
     }
