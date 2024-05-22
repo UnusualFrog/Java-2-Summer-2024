@@ -15,10 +15,8 @@ package main.java.ca.nl.cna.java2.exercise.ex4_IO;
  * */
 
 import java.sql.Timestamp;
-import java.util.Formatter;
-import java.util.InputMismatchException;
-import java.util.Random;
-import java.util.Scanner;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Class which stores a random number to be used in a guessing game
@@ -34,6 +32,10 @@ public class GuessingGame {
     public static void main(String[] args) {
         GuessingGame game = new GuessingGame();
         Scanner scanner = new Scanner(System.in);
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss-SSSZ" 	);
+        String formattedDate = sdf.format(date);
+        System.out.println(formattedDate);
 
         int userGuess = 0;
         System.out.println("Pick a number between 1-100:");
@@ -46,7 +48,7 @@ public class GuessingGame {
         }
         int guessCounter = 1;
 
-        try (Formatter output = new Formatter("gamelog.txt")){
+        try (Formatter output = new Formatter("./logs/gamelog"+ formattedDate +".txt")){
 
             // Continue guessing if initially wrong
             while (game.randomNumber != userGuess){

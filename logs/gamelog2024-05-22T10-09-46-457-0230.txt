@@ -1,0 +1,2 @@
+Guess #1: 50 
+Correct Guess #2: 25 
