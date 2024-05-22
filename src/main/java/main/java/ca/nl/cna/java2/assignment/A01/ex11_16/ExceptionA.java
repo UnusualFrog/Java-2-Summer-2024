@@ -10,6 +10,6 @@ package main.java.ca.nl.cna.java2.assignment.A01.ex11_16;
 public class ExceptionA extends Exception {
 
     public ExceptionA(String msg){
-        super("Exception A");
+        super(msg);
     }
 }

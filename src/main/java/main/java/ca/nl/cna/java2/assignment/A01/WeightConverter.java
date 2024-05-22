@@ -28,12 +28,32 @@ public class WeightConverter {
         System.out.println(converter.poundsToKilos(2.2046));
         System.out.println(converter.kilosToPounds(1.0));
 
-        // Incorrect zero case
-        System.out.println(converter.poundsToKilos(0));
-        System.out.println(converter.kilosToPounds(0));
+        // Incorrect zero cases
+        try {
+            System.out.println(converter.poundsToKilos(0));
+        } catch(AssertionError e) {
+            System.err.println(e);
+        }
 
-        // Incorrect negative case
-        System.out.println(converter.poundsToKilos(-1.5));
-        System.out.println(converter.kilosToPounds(-99.1));
+        try {
+            System.out.println(converter.kilosToPounds(0));
+        } catch(AssertionError e) {
+            System.err.println(e);
+        }
+
+        // Incorrect negative cases
+        try {
+            System.out.println(converter.poundsToKilos(-10.2));
+
+        } catch(AssertionError e) {
+            System.err.println(e);
+        }
+
+        try {
+            System.out.println(converter.kilosToPounds(-100.01));
+
+        } catch(AssertionError e) {
+            System.err.println(e);
+        }
     }
 }
