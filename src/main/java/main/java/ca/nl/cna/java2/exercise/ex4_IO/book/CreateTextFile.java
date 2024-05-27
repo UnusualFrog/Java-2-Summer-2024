@@ -1,4 +1,4 @@
-package main.java.ca.nl.cna.java2.exercise.ex4_IO;// Fig. 15.3: CreateTextFile.java
+package main.java.ca.nl.cna.java2.exercise.ex4_IO.book;// Fig. 15.3: CreateTextFile.java
 // Writing data to a sequential text file with class Formatter.
 import java.io.FileNotFoundException;     
 import java.lang.SecurityException;       

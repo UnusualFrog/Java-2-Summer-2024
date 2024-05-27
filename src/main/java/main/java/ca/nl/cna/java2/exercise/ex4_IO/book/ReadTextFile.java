@@ -1,4 +1,4 @@
-package main.java.ca.nl.cna.java2.exercise.ex4_IO;// Fig. 15.6: ReadTextFile.java
+package main.java.ca.nl.cna.java2.exercise.ex4_IO.book;// Fig. 15.6: ReadTextFile.java
 // This program reads a text file and displays each record.
 import java.io.IOException;
 import java.lang.IllegalStateException;

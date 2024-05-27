@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<accounts>
+    <account>
+        <accountNumber>88</accountNumber>
+        <balance>999.9</balance>
+        <firstName>Noah</firstName>
+        <lastName>Forward</lastName>
+    </account>
+    <account>
+        <accountNumber>12</accountNumber>
+        <balance>100.01</balance>
+        <firstName>Eric</firstName>
+        <lastName>Stock</lastName>
+    </account>
+</accounts>

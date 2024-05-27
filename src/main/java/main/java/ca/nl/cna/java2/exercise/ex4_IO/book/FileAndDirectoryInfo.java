@@ -1,4 +1,4 @@
-package main.java.ca.nl.cna.java2.exercise.ex4_IO;// Fig. 15.2: FileAndDirectoryInfo.java
+package main.java.ca.nl.cna.java2.exercise.ex4_IO.book;// Fig. 15.2: FileAndDirectoryInfo.java
 // File class used to obtain file and directory information.
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
