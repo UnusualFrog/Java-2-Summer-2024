@@ -1,4 +1,4 @@
-package main.java.ca.nl.cna.java2.exercise.ex4_IO;
+package main.java.ca.nl.cna.java2.exercise.ex4_IO.guessingGame;
 
 /**
  * May 21 Exercise
@@ -14,7 +14,6 @@ package main.java.ca.nl.cna.java2.exercise.ex4_IO;
  * When the correct guess is made, the program should exit.
  * */
 
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.*;
 

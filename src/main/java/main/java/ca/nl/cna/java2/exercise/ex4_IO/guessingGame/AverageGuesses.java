@@ -1,4 +1,4 @@
-package main.java.ca.nl.cna.java2.exercise.ex4_IO;
+package main.java.ca.nl.cna.java2.exercise.ex4_IO.guessingGame;
 
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
@@ -14,17 +14,13 @@ public class AverageGuesses {
 
         if (Files.isDirectory(path))
         {
-            System.out.printf("%nDirectory contents:%n");
-
             // object for iterating through a directory's contents
             try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(path)) {
                 for (Path p : directoryStream) {
-                    System.out.println(p);
-                    System.out.println(Files.lines(p).count());
                     totalGuessCount += Files.lines(p).count();
                     totalGameCount++;
                 }
-            } catch (IOException e){
+            } catch (IOException | SecurityException e){
                 System.err.println(e);
             }
         }
