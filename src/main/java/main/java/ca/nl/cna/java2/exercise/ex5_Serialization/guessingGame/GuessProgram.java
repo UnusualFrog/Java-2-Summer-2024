@@ -14,7 +14,7 @@ public class GuessProgram {
         Random rand = new Random();
         Scanner input = new Scanner(System.in);
         Date date = new Date();
-        Long timestamp = date.getTime();
+        long timestamp = date.getTime();
         GameLog gameLog = new GameLog();
 
         try (BufferedWriter output = Files.newBufferedWriter(Paths.get("./logs/xml/output" + timestamp +".xml"))){

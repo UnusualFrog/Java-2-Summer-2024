@@ -15,19 +15,21 @@ public class AnalyzeLogs {
             System.out.println("Folder exists");
 
             try {
-                DirectoryStream<Path> directoryStream =
-                        Files.newDirectoryStream(path);
-                int totalFiles = 0;
-                int totalGuesses = 0;
-                for (Path p : directoryStream) {
-                    totalFiles++;
-                    System.out.println(p);
-                    Scanner input = new Scanner(p);
-                    while( input.hasNext() ) {
-                        String line = input.nextLine();
-                        System.out.println(line);
-                        if (line.contains("<guess>")){
-                            totalGuesses++;
+                int totalFiles;
+                int totalGuesses;
+                try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(path)) {
+                    totalFiles = 0;
+                    totalGuesses = 0;
+                    for (Path p : directoryStream) {
+                        totalFiles++;
+                        System.out.println(p);
+                        Scanner input = new Scanner(p);
+                        while (input.hasNext()) {
+                            String line = input.nextLine();
+                            System.out.println(line);
+                            if (line.contains("<guess>")) {
+                                totalGuesses++;
+                            }
                         }
                     }
                 }
