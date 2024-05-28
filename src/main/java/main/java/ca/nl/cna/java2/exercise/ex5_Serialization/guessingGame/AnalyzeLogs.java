@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class AnalyzeLogs {
     public static void main(String[] args) {
-        Path path = Paths.get("./logs");
+        Path path = Paths.get("./logs/xml/");
         if (Files.exists(path))
         {
             System.out.println("Folder exists");
@@ -24,9 +24,11 @@ public class AnalyzeLogs {
                     System.out.println(p);
                     Scanner input = new Scanner(p);
                     while( input.hasNext() ) {
-                        totalGuesses++;
                         String line = input.nextLine();
                         System.out.println(line);
+                        if (line.contains("<guess>")){
+                            totalGuesses++;
+                        }
                     }
                 }
                 System.out.println("Total guesses " + totalGuesses);

@@ -17,7 +17,7 @@ public class GuessProgram {
         Long timestamp = date.getTime();
         GameLog gameLog = new GameLog();
 
-        try (BufferedWriter output = Files.newBufferedWriter(Paths.get("output.xml"))){
+        try (BufferedWriter output = Files.newBufferedWriter(Paths.get("./logs/xml/output" + timestamp +".xml"))){
             int correct = rand.nextInt( 1, 100);
             int guess = -99;
             int totalGuesses = 0;
