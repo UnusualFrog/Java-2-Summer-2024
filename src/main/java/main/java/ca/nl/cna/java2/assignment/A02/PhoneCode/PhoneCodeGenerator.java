@@ -1,4 +1,4 @@
-package main.java.ca.nl.cna.java2.assignment.A02;
+package main.java.ca.nl.cna.java2.assignment.A02.PhoneCode;
 
 import java.io.FileNotFoundException;
 import java.util.Formatter;

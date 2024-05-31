@@ -1,0 +1,17 @@
+Word: personal information, Occurrences: 1, Point Total: 2 
+Word: access, Occurrences: 1, Point Total: 2 
+Word: suspicious activity, Occurrences: 1, Point Total: 3 
+Word: update, Occurrences: 2, Point Total: 4 
+Word: customer support, Occurrences: 1, Point Total: 2 
+Word: confirm, Occurrences: 1, Point Total: 2 
+Word: amazon, Occurrences: 1, Point Total: 3 
+Word: important notice, Occurrences: 1, Point Total: 3 
+Word: verify your account, Occurrences: 3, Point Total: 9 
+Word: action required, Occurrences: 1, Point Total: 3 
+Word: immediate action required, Occurrences: 1, Point Total: 3 
+Word: payment, Occurrences: 2, Point Total: 4 
+Word: urgent, Occurrences: 1, Point Total: 3 
+Word: click here, Occurrences: 1, Point Total: 3 
+Word: suspension, Occurrences: 1, Point Total: 3 
+Word: confidential, Occurrences: 1, Point Total: 2 
+Overall Point Total: 51
