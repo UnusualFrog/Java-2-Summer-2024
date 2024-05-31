@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <settings>
     <settings>
-        <birthday>Jesus Times</birthday>
-        <height>99.9</height>
-        <name>Johnny</name>
-        <power>9.999999999999E12</power>
-        <weight>1000.0</weight>
+        <birthday>2002-07-07T00:00:00-02:30</birthday>
+        <height>6.1</height>
+        <name>Noah</name>
+        <power>200.1</power>
+        <weight>200.2</weight>
     </settings>
 </settings>

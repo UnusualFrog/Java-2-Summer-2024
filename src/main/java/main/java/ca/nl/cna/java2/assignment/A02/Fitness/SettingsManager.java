@@ -7,11 +7,15 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class SettingsManager {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         int headerLength = 30;
         int choice = -1;
         Path path = Paths.get("./logs/xml/fitnessSettings/Settings.xml");
@@ -62,9 +66,14 @@ public class SettingsManager {
                     scanner.nextLine();
                     settings.getSettingsInfo().setWeight(weight);
 
-                    System.out.println("Enter Birthday: ");
+                    System.out.println("Enter Birthday(yyyy-MM-dd): ");
                     String birthday = scanner.nextLine();
-                    settings.getSettingsInfo().setBirthday(birthday);
+                    try {
+                        Date birthdayDate = dateFormat.parse(birthday);
+                        settings.getSettingsInfo().setBirthday(birthdayDate);
+                    } catch (ParseException e) {
+                        System.err.println("Invalid date format. Please use yyyy-MM-dd.");
+                    }
 
                     System.out.println("Enter Functional Threshold Power: ");
                     double power = scanner.nextDouble();
