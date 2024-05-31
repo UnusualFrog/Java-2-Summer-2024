@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <settings>
-    <guess>50</guess>
-    <guess>25</guess>
-    <guess>15</guess>
-    <guess>5</guess>
-    <guess>1</guess>
+    <settings>
+        <birthday>Jesus Times</birthday>
+        <height>99.9</height>
+        <name>Johnny</name>
+        <power>9.999999999999E12</power>
+        <weight>1000.0</weight>
+    </settings>
 </settings>

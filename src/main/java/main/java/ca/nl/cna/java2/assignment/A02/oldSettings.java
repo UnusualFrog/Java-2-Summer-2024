@@ -1,13 +1,13 @@
 package main.java.ca.nl.cna.java2.assignment.A02;
 
-public class Settings {
+public class oldSettings {
     private String name;
     private double height;
     private double weight;
     private String birthday;
     private double power;
 
-    public Settings() {
+    public oldSettings() {
         this.name = "";
         this.height = 0.0;
         this.weight = 0.0;
@@ -15,7 +15,7 @@ public class Settings {
         this.power = 0.0;
     }
 
-    public Settings(String name, double height, double weight, String birthday, double power){
+    public oldSettings(String name, double height, double weight, String birthday, double power){
         this.name = name;
         this.height = height;
         this.weight = weight;
