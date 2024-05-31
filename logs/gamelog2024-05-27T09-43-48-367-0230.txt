@@ -1,5 +1,0 @@
-Guess #1: 50 
-Guess #2: 75 
-Guess #3: 85 
-Guess #4: 80 
-Correct Guess #5: 78 

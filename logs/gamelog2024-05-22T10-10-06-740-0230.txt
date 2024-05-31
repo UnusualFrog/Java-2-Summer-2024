@@ -1,7 +1,0 @@
-Guess #1: 50 
-Guess #2: 75 
-Guess #3: 85 
-Guess #4: 95 
-Guess #5: 99 
-Guess #6: 97 
-Correct Guess #7: 98 

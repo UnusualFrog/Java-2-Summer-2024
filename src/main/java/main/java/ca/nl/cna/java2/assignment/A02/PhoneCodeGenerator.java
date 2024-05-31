@@ -26,19 +26,8 @@ public class PhoneCodeGenerator {
     public void generateComboLogs(String userInput) {
         try (Formatter output = new Formatter("./logs/phone/phone_combos_"+ userInput +".txt")) {
             output.format("Original Phone Number: %s", userInput);
-//            for (int i = 0; i < userInput.length(); i++) {
-//                System.out.println(phoneCodes.get(Character.toString(userInput.charAt(i)))[0]);
-//            }
-            int i = 0;
-            while (i > -1){
-                if (i < userInput.length()){
-                    i++;
-                    System.out.println(userInput.charAt(i));
-                }
-                else {
-                    i--;
-                    System.out.println(userInput.charAt(i));
-                }
+            for (int i = 0; i < userInput.length(); i++) {
+                System.out.println(phoneCodes.get(Character.toString(userInput.charAt(i)))[0]);
             }
 
         } catch (FileNotFoundException e) {
