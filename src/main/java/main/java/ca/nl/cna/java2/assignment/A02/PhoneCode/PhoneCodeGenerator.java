@@ -26,21 +26,21 @@ public class PhoneCodeGenerator {
     public void generateComboLogs(String userInput) {
         try (Formatter output = new Formatter("./logs/phone/phone_combos_"+ userInput +".txt")) {
             output.format("Original Phone Number: %s \n", userInput);
-            generateCombo(output, userInput, "", 0, 0);
+            generateCombo(output, userInput, "", 0);
 
         } catch (FileNotFoundException e) {
             System.err.println(e);
         }
     }
 
-    private void generateCombo(Formatter output, String inputCode, String outputCode, int inputIndex, int hashIndex) {
-        int currentDigit = Integer.parseInt(inputCode.charAt(inputIndex) + "");
-        if (inputIndex == inputCode.length()-1) {
+    private void generateCombo(Formatter output, String inputCode, String outputCode, int inputIndex) {
+        if (inputIndex == inputCode.length()) {
             output.format("%s\n", outputCode);
             return;
         } else {
+            int currentDigit = Integer.parseInt(inputCode.charAt(inputIndex) + "");
             for (int i = 0; i < 3; i++) {
-                generateCombo(output, inputCode, outputCode + this.getPhoneCodes().get(currentDigit)[i], inputIndex + 1, i);
+                generateCombo(output, inputCode, outputCode + this.getPhoneCodes().get(currentDigit)[i], inputIndex + 1);
             }
 
         }
