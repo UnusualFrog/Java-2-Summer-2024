@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class PhoneCodeGenerator {
     private final HashMap<Integer, String[]> phoneCodes = new HashMap<>();
 
+    // Construct phone code hash map
     public PhoneCodeGenerator() {
         phoneCodes.put(2,new String[]{"A","B","C"});
         phoneCodes.put(3,new String[]{"D","E","F"});
@@ -23,6 +24,7 @@ public class PhoneCodeGenerator {
         return phoneCodes;
     }
 
+    // Add header to file and start recursion
     public void generateComboLogs(String userInput) {
         try (Formatter output = new Formatter("./logs/phone/phone_combos_"+ userInput +".txt")) {
             output.format("Original Phone Number: %s \n", userInput);
@@ -34,15 +36,16 @@ public class PhoneCodeGenerator {
     }
 
     private void generateCombo(Formatter output, String inputCode, String outputCode, int inputIndex) {
+        // Write output code to file when index reaches end of input code
         if (inputIndex == inputCode.length()) {
             output.format("%s\n", outputCode);
             return;
         } else {
             int currentDigit = Integer.parseInt(inputCode.charAt(inputIndex) + "");
+            // Make recursive call using all 3 of the letter codes per digit of the input code
             for (int i = 0; i < 3; i++) {
                 generateCombo(output, inputCode, outputCode + this.getPhoneCodes().get(currentDigit)[i], inputIndex + 1);
             }
-
         }
     }
 
@@ -63,6 +66,12 @@ public class PhoneCodeGenerator {
             userNumber = numberParts[0];
         }
 
-        generator.generateComboLogs(userNumber);
+        try {
+            generator.generateComboLogs(userNumber);
+        } catch (NumberFormatException e) {
+            System.err.println("Invalid Input: Input must be length of 7 and include only digits");
+        }
+
+
     }
 }
