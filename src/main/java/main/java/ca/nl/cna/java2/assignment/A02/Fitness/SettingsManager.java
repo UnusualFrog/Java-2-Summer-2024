@@ -21,36 +21,46 @@ public class SettingsManager {
         Path path = Paths.get("./logs/xml/fitnessSettings/Settings.xml");
         Settings settings = null;
 
+        // load settings data if settings.xml already exists
         if (Files.exists(path)) {
             try (BufferedReader input = Files.newBufferedReader(path)) {
+                // load data into settings object
                 settings = JAXB.unmarshal(input, Settings.class);
-//                System.out.println(settings.getSettingsInfo().getName());
             } catch (IOException e) {
                 System.err.println(e);
             }
         }
         else {
+            // Create new settings object if no existing data
             settings = new Settings();
         }
 
+        // Menu options
         while (choice != 0) {
             System.out.println("-".repeat(headerLength));
             System.out.println("Choose an option: ");
-            System.out.println("1. View Settings ");
-            System.out.println("2. Update Settings ");
-            System.out.println("0. Save and Exit ");
+            System.out.println("1. View Settings");
+            System.out.println("2. Update Settings");
+            System.out.println("0. Exit");
             System.out.println("-".repeat(headerLength));
             choice = scanner.nextInt();
             scanner.nextLine();
 
+            // View settings
             if (choice == 1) {
-                System.out.println("Name:" + settings.getSettingsInfo().getName());
-                System.out.println("Height:" + settings.getSettingsInfo().getHeight());
-                System.out.println("Weight:" + settings.getSettingsInfo().getWeight());
-                System.out.println("Birthday:" + settings.getSettingsInfo().getBirthday());
-                System.out.println("Functional Threshold Power:" + settings.getSettingsInfo().getPower());
+                // View settings only available if Settings.xml already exists
+                if (Files.exists(path)) {
+                    System.out.println("Name: " + settings.getSettingsInfo().getName());
+                    System.out.println("Height: " + settings.getSettingsInfo().getHeight());
+                    System.out.println("Weight: " + settings.getSettingsInfo().getWeight());
+                    System.out.println("Birthday: " + settings.getSettingsInfo().getBirthday());
+                    System.out.println("Functional Threshold Power: " + settings.getSettingsInfo().getPower());
+                } else {
+                    System.out.println("Settings does not exist. Create it first with 'update' before viewing");
+                }
             }
             else if (choice == 2) {
+                // Accept user input to update Settings.xml
                 try(BufferedWriter output =
                             Files.newBufferedWriter(path)) {
                     System.out.println("Enter Name: ");
@@ -79,6 +89,8 @@ public class SettingsManager {
                     double power = scanner.nextDouble();
                     settings.getSettingsInfo().setPower(power);
 
+                    // Save settings and update Settings.xml
+                    System.out.println("Settings successfully saved!");
                     JAXB.marshal(settings, output);
                 }
                 catch(IOException e) {

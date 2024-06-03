@@ -9,20 +9,13 @@ public class Setting {
     private Date birthday;
     private double power;
 
+    // Construct object with default values to be set by user or loaded from xml
     public Setting() {
         this.name = "";
         this.height = 0.0;
         this.weight = 0.0;
         this.birthday = new Date();
         this.power = 0.0;
-    }
-
-    public Setting(String name, double height, double weight, Date birthday, double power){
-        this.name = name;
-        this.height = height;
-        this.weight = weight;
-        this.birthday = birthday;
-        this.power = power;
     }
 
     public String getName() {

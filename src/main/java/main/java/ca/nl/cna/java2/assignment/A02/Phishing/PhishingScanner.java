@@ -11,10 +11,14 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class PhishingScanner {
+    // Store frequency value of each key word
     private final HashMap<String, Integer> phishingCodeValues = new HashMap<>();
+
+    // Store count of each key word found in text file/email
     private final HashMap<String, Integer> phishingCodeCounts = new HashMap<>();
 
     public PhishingScanner() {
+        // List of words ranked by likelihood to appear
         phishingCodeValues.put("urgent", 3);
         phishingCodeValues.put("password", 3);
         phishingCodeValues.put("verify your account", 3);
@@ -63,20 +67,21 @@ public class PhishingScanner {
 
         if (Files.exists(path)) {
             try (Scanner input = new Scanner(path)) {
+                // Search input file line by line
                 while (input.hasNext()) {
                     String currentLine = input.nextLine().toLowerCase();
-//                    System.out.println(currentLine);
-
+                    // Loop through keywords and check for presence in each line
                     for (String key : phishingScanner.getPhishingCodeValues().keySet()) {
                         if(currentLine.contains(key)) {
-//                            System.out.println("Found: " + key );
                             // Check if current word is a key word
                             if (phishingScanner.getPhishingCodeValues().containsKey(key)) {
                                 //Update key word counts
                                 if(phishingScanner.getPhishingCodeCounts().containsKey(key)) {
+                                    // Increment existing key word count
                                     phishingScanner.getPhishingCodeCounts().put(key, phishingScanner.getPhishingCodeCounts().get(key) + 1);
                                 }
                                 else {
+                                    // Add key word to count dict with starting count of 1
                                     phishingScanner.getPhishingCodeCounts().put(key, 1);
                                 }
                             }
@@ -87,6 +92,7 @@ public class PhishingScanner {
                 System.err.println(e);
             }
 
+            // Output keywords found with point total and occurrence counts for each keyword to text file
             String filename = (path.getFileName() + "").substring(0, (path.getFileName() + "").indexOf("."));
             int overallPointTotal = 0;
             try (Formatter output = new Formatter("./logs/phishing/"+ filename + "_output" +".txt")) {
@@ -101,7 +107,6 @@ public class PhishingScanner {
             } catch (FileNotFoundException e) {
                 System.err.println(e);
             }
-
         }
     }
 }

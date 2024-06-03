@@ -71,7 +71,5 @@ public class PhoneCodeGenerator {
         } catch (NumberFormatException e) {
             System.err.println("Invalid Input: Input must be length of 7 and include only digits");
         }
-
-
     }
 }

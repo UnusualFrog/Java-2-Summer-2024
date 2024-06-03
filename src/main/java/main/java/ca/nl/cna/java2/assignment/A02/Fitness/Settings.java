@@ -9,6 +9,6 @@ public class Settings {
         @XmlElement(name="settings")
         private Setting settings = new Setting(); // stores Accounts
 
-        // returns the List<Accounts>
+        // Returns the setting object
         public Setting getSettingsInfo() {return settings;}
 }
