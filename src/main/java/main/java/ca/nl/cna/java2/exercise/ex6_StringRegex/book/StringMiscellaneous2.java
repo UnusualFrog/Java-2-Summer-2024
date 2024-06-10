@@ -1,4 +1,4 @@
-package main.java.ca.nl.cna.java2.exercise.ex6_StringRegex;// Fig. 14.8: StringMiscellaneous2.java
+package main.java.ca.nl.cna.java2.exercise.ex6_StringRegex.book;// Fig. 14.8: StringMiscellaneous2.java
 // String methods replace, toLowerCase, toUpperCase, trim and toCharArray.
 
 import java.util.Random;

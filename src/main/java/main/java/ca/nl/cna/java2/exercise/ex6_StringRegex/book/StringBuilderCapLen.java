@@ -1,35 +1,22 @@
-package main.java.ca.nl.cna.java2.exercise.ex6_StringRegex;// Fig. 14.2: StringMiscellaneous.java
-// This application demonstrates the length, charAt and getChars
-// methods of the String class.
+package main.java.ca.nl.cna.java2.exercise.ex6_StringRegex.book;// Fig. 14.11: main.java.ca.nl.cna.java2.exercise.ex6_StringRegex.book.StringBuilderCapLen.java
+// StringBuilder length, setLength, capacity and ensureCapacity methods.
 
-public class StringMiscellaneous {
+public class StringBuilderCapLen {
    public static void main(String[] args) {
-      String s1 = "hello there";
-      char[] charArray = new char[5];
+      StringBuilder buffer = new StringBuilder("Hello, how are you?");
 
-      System.out.printf("s1: %s", s1);
+      System.out.printf("buffer = %s\nlength = %d\ncapacity = %d\n\n",
+         buffer.toString(), buffer.length(), buffer.capacity());
 
-      // test length method
-      System.out.printf("\nLength of s1: %d", s1.length());
+      buffer.ensureCapacity(75);
+      System.out.printf("New capacity = %d\n\n", buffer.capacity());
 
-      // loop through characters in s1 with charAt and display reversed
-      System.out.printf("%nThe string reversed is: ");
-
-      for (int count = s1.length() - 1; count >= 0; count--) {
-         System.out.printf("%c ", s1.charAt(count));
-      }
-
-      // copy characters from string into charArray
-      s1.getChars(0, 5, charArray, 0);
-      System.out.printf("%nThe character array is: ");
-
-      for (char character : charArray) {
-         System.out.print(character); 
-      }
-
-      System.out.println();
+      buffer.setLength(10);
+      System.out.printf("New length = %d\nbuffer = %s\n", 
+         buffer.length(), buffer.toString());
    } 
-}
+} 
+
 
 /**************************************************************************
  * (C) Copyright 1992-2018 by Deitel & Associates, Inc. and               *

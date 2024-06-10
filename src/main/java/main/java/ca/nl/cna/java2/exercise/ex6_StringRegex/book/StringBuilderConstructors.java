@@ -1,21 +1,17 @@
-// Fig. 14.11: StringBuilderCapLen.java
-// StringBuilder length, setLength, capacity and ensureCapacity methods.
+package main.java.ca.nl.cna.java2.exercise.ex6_StringRegex.book;// Fig. 14.10: StringBuilderConstructors.java
+// StringBuilder constructors.
 
-public class StringBuilderCapLen {
+public class StringBuilderConstructors {
    public static void main(String[] args) {
-      StringBuilder buffer = new StringBuilder("Hello, how are you?");
+      StringBuilder buffer1 = new StringBuilder();
+      StringBuilder buffer2 = new StringBuilder(10);
+      StringBuilder buffer3 = new StringBuilder("hello");
 
-      System.out.printf("buffer = %s\nlength = %d\ncapacity = %d\n\n",
-         buffer.toString(), buffer.length(), buffer.capacity());
-
-      buffer.ensureCapacity(75);
-      System.out.printf("New capacity = %d\n\n", buffer.capacity());
-
-      buffer.setLength(10);
-      System.out.printf("New length = %d\nbuffer = %s\n", 
-         buffer.length(), buffer.toString());
+      System.out.printf("buffer1 = \"%s\"\n", buffer1);
+      System.out.printf("buffer2 = \"%s\"\n", buffer2);
+      System.out.printf("buffer3 = \"%s\"\n", buffer3);
    } 
-} 
+}
 
 
 /**************************************************************************

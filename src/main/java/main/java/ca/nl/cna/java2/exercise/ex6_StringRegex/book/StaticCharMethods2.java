@@ -1,4 +1,4 @@
-package main.java.ca.nl.cna.java2.exercise.ex6_StringRegex;// Fig. 14.16: StaticCharMethods2.java
+package main.java.ca.nl.cna.java2.exercise.ex6_StringRegex.book;// Fig. 14.16: StaticCharMethods2.java
 // Character class static conversion methods.
 import java.util.Scanner;
 

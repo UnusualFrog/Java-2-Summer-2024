@@ -1,4 +1,4 @@
-package main.java.ca.nl.cna.java2.exercise.ex6_StringRegex;// Fig. 14.20: ValidateInput.java
+package main.java.ca.nl.cna.java2.exercise.ex6_StringRegex.book;// Fig. 14.20: ValidateInput.java
 // Validating user information using regular expressions.
 
 public class ValidateInput {

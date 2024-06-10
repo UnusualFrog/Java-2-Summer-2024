@@ -1,4 +1,4 @@
-package main.java.ca.nl.cna.java2.exercise.ex6_StringRegex;// Fig. 14.21: Validate.java
+package main.java.ca.nl.cna.java2.exercise.ex6_StringRegex.book;// Fig. 14.21: Validate.java
 // Input and validate data from user using the ValidateInput class.
 import java.util.Scanner;
 

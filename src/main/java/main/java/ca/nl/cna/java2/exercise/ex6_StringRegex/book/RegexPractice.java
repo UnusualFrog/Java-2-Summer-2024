@@ -1,4 +1,4 @@
-package main.java.ca.nl.cna.java2.exercise.ex6_StringRegex;
+package main.java.ca.nl.cna.java2.exercise.ex6_StringRegex.book;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

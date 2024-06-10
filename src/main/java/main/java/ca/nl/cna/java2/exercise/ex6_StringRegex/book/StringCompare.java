@@ -1,4 +1,4 @@
-// Fig. 14.3: StringCompare.java
+package main.java.ca.nl.cna.java2.exercise.ex6_StringRegex.book;// Fig. 14.3: main.java.ca.nl.cna.java2.exercise.ex6_StringRegex.book.StringCompare.java
 // String methods equals, equalsIgnoreCase, compareTo and regionMatches.
 
 public class StringCompare {
