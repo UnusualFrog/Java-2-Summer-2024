@@ -24,20 +24,20 @@ public class RedactInfo {
         }
 
         // Create regex patterns
-        Pattern pattern = Pattern.compile("([\\d]*-[\\d]*-[\\d]*-*[\\d]*|CODE[\\d]{17})");
+        Pattern sensitivePattern = Pattern.compile("([\\d]*-[\\d]*-[\\d]*-*[\\d]*|CODE[\\d]{17}|\\$[\\d]+\\.[\\d]+).");
         Pattern digitPattern = Pattern.compile("\\d");
 
         // Loop through each line
         for (String line : info) {
-            Matcher matcher = pattern.matcher(line);
+            Matcher matcher = sensitivePattern.matcher(line);
             System.out.println(line);
             // If line contains sensitive info
             if (matcher.find()) {
-                String[] tokens = line.split("[ .]+");
+                String[] tokens = line.split("[ ]+");
                 System.out.println(Arrays.toString(tokens));
-                // Loop through "words" of line to find and replace word containing sensitive info
+                // Loop through "tokens" of line to find and replace "token" containing sensitive info
                 for (int i = 0; i < tokens.length; i++) {
-                    if (tokens[i].matches(pattern.toString())){
+                    if (tokens[i].matches(sensitivePattern.toString())){
                         Matcher digitMatcher = digitPattern.matcher(tokens[i]);
                         tokens[i] = digitMatcher.replaceAll("█");
                     }
