@@ -25,17 +25,15 @@ public class RedactInfo {
         }
 
         // Create regex patterns
-        Pattern sensitivePattern = Pattern.compile("(\\d*-\\d*-\\d*-*[\\d]*|CODE\\d{17}|\\$\\d+\\.\\d+).");
+        Pattern sensitivePattern = Pattern.compile("(\\d*-\\d*-\\d*-*\\d*|CODE\\d{17}|\\$\\d+\\.\\d+).");
         Pattern digitPattern = Pattern.compile("\\d");
 
         // Loop through each line
         for (String line : info) {
             Matcher matcher = sensitivePattern.matcher(line);
-//            System.out.println(line);
             // If line contains sensitive info
             if (matcher.find()) {
                 String[] tokens = line.split("\\s+");
-//                System.out.println(Arrays.toString(tokens));
                 // Loop through "tokens" of line to find and replace "token" containing sensitive info
                 for (int i = 0; i < tokens.length; i++) {
                     if (tokens[i].matches(sensitivePattern.toString())){
@@ -43,17 +41,12 @@ public class RedactInfo {
                         tokens[i] = digitMatcher.replaceAll("█");
                     }
                 }
-//                System.out.println(Arrays.toString(tokens));
                 redactedOutput.append(String.join(" ",tokens));
-
             } else {
                 redactedOutput.append(line);
             }
-
         }
 
-//        System.out.println("-".repeat(100));
-//        System.out.println(redactedOutput);
         try (Formatter output = new Formatter("src/main/java/main/java/ca/nl/cna/java2/assignment/A03/Redaction/sampleInfoRedacted.txt")){
             output.format(redactedOutput.toString());
         } catch (IOException e) {

@@ -13,7 +13,7 @@ public class ReverseSentence {
             outputSentence.append(" ");
         }
 
-        return outputSentence.toString();
+        return outputSentence.toString().trim();
     }
 
     public static void main(String[] args) {

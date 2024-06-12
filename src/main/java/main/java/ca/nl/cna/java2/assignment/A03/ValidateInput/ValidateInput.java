@@ -5,7 +5,7 @@ package main.java.ca.nl.cna.java2.assignment.A03.ValidateInput;
 public class ValidateInput {
    // validate first name
    public static boolean validateFirstName(String firstName) {
-      return firstName.matches("[A-Z][a-zA-Z]{3,}");
+      return firstName.matches("[a-zA-Z]{3,}");
    } 
 
    // validate last name
@@ -36,7 +36,7 @@ public class ValidateInput {
 
    // validate phone
    public static boolean validatePhone(String phone) {
-      return phone.matches("\\d{2}-[1-9]\\d{2}-[1-9]\\d{2}-\\d{4}");
+      return phone.matches("\\d{2}-[0-9]\\d{2}-[0-9]\\d{2}-\\d{4}");
    }
 } 
 

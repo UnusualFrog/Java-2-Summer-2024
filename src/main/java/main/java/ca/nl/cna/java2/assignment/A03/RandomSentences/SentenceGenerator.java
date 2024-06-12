@@ -13,6 +13,7 @@ public class SentenceGenerator {
         String outputSentence = "";
 
         String firstWord = articles[random.nextInt(0,articles.length)];
+        // Set first letter to uppercase
         firstWord = firstWord.substring(0,1).toUpperCase() + firstWord.substring(1);
         outputSentence += firstWord;
         outputSentence += " ";
