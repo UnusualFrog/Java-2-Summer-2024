@@ -3,7 +3,6 @@ package main.java.ca.nl.cna.java2.assignment.A05;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -25,26 +24,18 @@ public class Main {
             }
         }
 
-        // Run feed checker with executor
-        try ( ScheduledExecutorService scheduler
-                      = Executors.newScheduledThreadPool(11); ) {
-            for (String current_url : feedUrls) {
-                scheduler.scheduleAtFixedRate(new RSSFeedChecker(current_url), 0, 10, TimeUnit.SECONDS);
-            }
+        // Create scheduled executor
+        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(feedUrls.size());
 
-            scheduler.shutdown();
-
-        } catch (Exception e) {
-            System.err.println(e);
+        // Schedule the RSS feed checkers to run periodically
+        for (String currentUrl : feedUrls) {
+            executorService.scheduleAtFixedRate(new RSSFeedChecker(currentUrl), 0, 30, TimeUnit.SECONDS);
         }
 
+        // Shutdown the executor service
+//         executorService.shutdown();
 
-
-
-
-//        for (String feedUrl : feedUrls) {
-//            RSSFeedChecker checker = new RSSFeedChecker();
-//            checker.checkFeed();
-//        }
+        // Close the scanner
+        scanner.close();
     }
 }

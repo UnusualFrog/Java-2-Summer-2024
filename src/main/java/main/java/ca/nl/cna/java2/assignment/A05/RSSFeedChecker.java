@@ -22,7 +22,7 @@ public class RSSFeedChecker implements Runnable {
     public void run() {
         System.out.println("Thread running: " + feedUrl);
 
-//        checkFeed();
+        checkFeed();
     }
 
     public void checkFeed() {
