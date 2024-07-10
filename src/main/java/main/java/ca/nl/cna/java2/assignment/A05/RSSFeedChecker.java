@@ -20,7 +20,7 @@ public class RSSFeedChecker implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("Thread running: " + feedUrl);
+        System.out.println("----- Update from RSS feed: " + feedUrl + " ------");
 
         checkFeed();
     }
