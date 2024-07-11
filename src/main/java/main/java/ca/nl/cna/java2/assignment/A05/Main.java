@@ -27,9 +27,12 @@ public class Main {
         // Create scheduled executor
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(feedUrls.size());
 
+        //https://feeds.bbci.co.uk/news/world/rss.xml
+        //https://www.nytimes.com/svc/collections/v1/publish/https://www.nytimes.com/section/world/rss.xml
+
         // Schedule the RSS feed checkers to run periodically
         for (String currentUrl : feedUrls) {
-            executorService.scheduleAtFixedRate(new RSSFeedChecker(currentUrl), 0, 30, TimeUnit.SECONDS);
+            executorService.scheduleAtFixedRate(new RSSFeedChecker(currentUrl), 0, 10, TimeUnit.SECONDS);
         }
 
         // Shutdown the executor service

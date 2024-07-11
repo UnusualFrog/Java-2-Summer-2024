@@ -10,9 +10,11 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class RSSFeedChecker implements Runnable {
     private String feedUrl;
+    private RSSItem lastItem;
 
     public RSSFeedChecker(String feedUrl) {
         this.feedUrl = feedUrl;
@@ -48,40 +50,30 @@ public class RSSFeedChecker implements Runnable {
                 }
             }
 
+            // Issue with code is that thread runs from start each time
+            lastItem = items.get(0);
+
             System.out.println("Feed: " + feedUrl);
-            for (int i = 0; i < Math.min(3, items.size()); i++) {
-                RSSItem item = items.get(i);
-                System.out.println("Title: " + item.getTitle());
-                System.out.println("Link: " + item.getLink());
-                System.out.println("Published Date: " + item.getPubDate());
-                System.out.println();
+            if (!Objects.equals(items.get(items.size() - 1).getTitle(), lastItem.getTitle())) {
+                for (int i = items.size() - Math.min(3, items.size()); i < items.size(); i++) {
+                    RSSItem item = items.get(i);
+                    System.out.println("Title: " + item.getTitle());
+                    System.out.println("Link: " + item.getLink());
+                    System.out.println("Published Date: " + item.getPubDate());
+                    System.out.println();
+                    lastItem = item;
+                }
+
+            } else {
+                System.out.println("No new updates from");
             }
+            System.out.print("Last item: ");
+            System.out.println(lastItem.getTitle());
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static class RSSItem {
-        private String title;
-        private String link;
-        private String pubDate;
 
-        public RSSItem(String title, String link, String pubDate) {
-            this.title = title;
-            this.link = link;
-            this.pubDate = pubDate;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public String getLink() {
-            return link;
-        }
-
-        public String getPubDate() {
-            return pubDate;
-        }
-    }
 }
