@@ -33,6 +33,11 @@ public class Main {
         // Schedule the RSS feed checkers to run periodically
         for (String currentUrl : feedUrls) {
             executorService.scheduleAtFixedRate(new RSSFeedChecker(currentUrl), 0, 10, TimeUnit.SECONDS);
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         // Shutdown the executor service
