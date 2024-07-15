@@ -51,27 +51,32 @@ public class RSSFeedChecker implements Runnable {
             }
 
             // Issue with code is that thread runs from start each time
-            lastItem = items.get(0);
+//            this.lastItem = items.get(0);
+            if (this.lastItem != null) {
+                System.out.println("Feed: " + feedUrl);
+                if (!Objects.equals(items.get(items.size() - 1).getTitle(), this.lastItem.getTitle())) {
+                    getLastThreeItems(items);
 
-            System.out.println("Feed: " + feedUrl);
-            if (!Objects.equals(items.get(items.size() - 1).getTitle(), lastItem.getTitle())) {
-                for (int i = items.size() - Math.min(3, items.size()); i < items.size(); i++) {
-                    RSSItem item = items.get(i);
-                    System.out.println("Title: " + item.getTitle());
-                    System.out.println("Link: " + item.getLink());
-                    System.out.println("Published Date: " + item.getPubDate());
-                    System.out.println();
-                    lastItem = item;
+                } else {
+                    System.out.println("No new updates");
                 }
-
             } else {
-                System.out.println("No new updates from");
+                getLastThreeItems(items);
             }
-            System.out.print("Last item: ");
-            System.out.println(lastItem.getTitle());
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private void getLastThreeItems(List<RSSItem> items) {
+        for (int i = items.size() - Math.min(3, items.size()); i < items.size(); i++) {
+            RSSItem item = items.get(i);
+            System.out.println("Title: " + item.getTitle());
+            System.out.println("Link: " + item.getLink());
+            System.out.println("Published Date: " + item.getPubDate());
+            System.out.println();
+            this.lastItem = item;
         }
     }
 
