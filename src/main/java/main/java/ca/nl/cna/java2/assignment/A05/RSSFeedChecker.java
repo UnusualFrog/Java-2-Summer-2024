@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class RSSFeedChecker implements Runnable {
-    private String feedUrl;
+    private final String feedUrl;
     private RSSItem lastItem;
 
     public RSSFeedChecker(String feedUrl) {
@@ -23,7 +23,6 @@ public class RSSFeedChecker implements Runnable {
     @Override
     public void run() {
         System.out.println("----- Update from RSS feed: " + feedUrl + " ------");
-
         checkFeed();
     }
 
@@ -50,11 +49,10 @@ public class RSSFeedChecker implements Runnable {
                 }
             }
 
-            // Issue with code is that thread runs from start each time
-//            this.lastItem = items.get(0);
+            // Check if this is the first run of the feed or if this is an update of the feed
             if (this.lastItem != null) {
-                System.out.println("Feed: " + feedUrl);
-                if (!Objects.equals(items.get(items.size() - 1).getTitle(), this.lastItem.getTitle())) {
+                // Check if the last item viewed differs from the most recent item to determine if the feed updated
+                if (!Objects.equals(items.get(Math.min(3, items.size())-1).getTitle(), this.lastItem.getTitle())) {
                     getLastThreeItems(items);
 
                 } else {
@@ -63,14 +61,15 @@ public class RSSFeedChecker implements Runnable {
             } else {
                 getLastThreeItems(items);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("-".repeat(50));
     }
 
+    // Print item details and save most recent item for later evaluation
     private void getLastThreeItems(List<RSSItem> items) {
-        for (int i = items.size() - Math.min(3, items.size()); i < items.size(); i++) {
+        for (int i = 0; i < Math.min(3, items.size()); i++) {
             RSSItem item = items.get(i);
             System.out.println("Title: " + item.getTitle());
             System.out.println("Link: " + item.getLink());
@@ -79,6 +78,4 @@ public class RSSFeedChecker implements Runnable {
             this.lastItem = item;
         }
     }
-
-
 }

@@ -2,17 +2,18 @@ package main.java.ca.nl.cna.java2.assignment.A04;
 
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 public class CopyReverseLinkedListQ4 {
     public static void main(String[] args) {
         char[] chars = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
-        LinkedList<Character> listForwards = new LinkedList<>();
+        List<Character> listForwards = new LinkedList<>();
 
         for (char letter : chars) {
             listForwards.add(letter);
         }
 
-        LinkedList<Character> listBackwards = new LinkedList<>(listForwards);
+        List<Character> listBackwards = new LinkedList<>(listForwards);
         Collections.reverse(listBackwards);
 
         System.out.println("Original List: ");

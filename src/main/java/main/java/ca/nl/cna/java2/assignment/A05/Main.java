@@ -27,23 +27,22 @@ public class Main {
         // Create scheduled executor
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(feedUrls.size());
 
-        //https://feeds.bbci.co.uk/news/world/rss.xml
-        //https://www.nytimes.com/svc/collections/v1/publish/https://www.nytimes.com/section/world/rss.xml
-
         // Schedule the RSS feed checkers to run periodically
         for (String currentUrl : feedUrls) {
             executorService.scheduleAtFixedRate(new RSSFeedChecker(currentUrl), 0, 10, TimeUnit.SECONDS);
             try {
+                // Sleep for 5-seconds to give space for multiple feeds to run separately
                 Thread.sleep(5000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        // Shutdown the executor service
-//         executorService.shutdown();
-
         // Close the scanner
         scanner.close();
     }
 }
+
+// Sample RSS Feeds
+//https://feeds.bbci.co.uk/news/world/rss.xml
+//https://www.nytimes.com/svc/collections/v1/publish/https://www.nytimes.com/section/world/rss.xml
