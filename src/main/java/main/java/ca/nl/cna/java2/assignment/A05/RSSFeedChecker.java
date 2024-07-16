@@ -12,20 +12,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * RSSFeedChecker is a Runnable class that periodically checks an RSS feed for updates.
+ */
 public class RSSFeedChecker implements Runnable {
     private final String feedUrl;
     private RSSItem lastItem;
 
+    /**
+     * Constructor for RSSFeedChecker.
+     *
+     * @param feedUrl The URL of the RSS feed to monitor.
+     */
     public RSSFeedChecker(String feedUrl) {
         this.feedUrl = feedUrl;
     }
 
+    /**
+     * Implements the run method from the Runnable interface.
+     * Initiates the feed checking process.
+     */
     @Override
     public void run() {
-        System.out.println("----- Update from RSS feed: " + feedUrl + " ------");
         checkFeed();
     }
 
+    /**
+     * Checks the RSS feed for updates.
+     * This method parses the XML content from the feed and prints recent items if updated.
+     */
     public void checkFeed() {
         try {
             URL url = new URL(feedUrl);
@@ -55,8 +70,6 @@ public class RSSFeedChecker implements Runnable {
                 if (!Objects.equals(items.get(Math.min(3, items.size())-1).getTitle(), this.lastItem.getTitle())) {
                     getLastThreeItems(items);
 
-                } else {
-                    System.out.println("No new updates");
                 }
             } else {
                 getLastThreeItems(items);
@@ -64,11 +77,17 @@ public class RSSFeedChecker implements Runnable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("-".repeat(50));
+
     }
 
-    // Print item details and save most recent item for later evaluation
+    /**
+     * Prints details of the last three RSS items retrieved.
+     * Updates the lastItem field with the most recent item for future comparisons.
+     *
+     * @param items List of RSSItem objects representing the items from the RSS feed.
+     */
     private void getLastThreeItems(List<RSSItem> items) {
+        System.out.println("----- Update from RSS feed: " + feedUrl + " ------");
         for (int i = 0; i < Math.min(3, items.size()); i++) {
             RSSItem item = items.get(i);
             System.out.println("Title: " + item.getTitle());
@@ -77,5 +96,6 @@ public class RSSFeedChecker implements Runnable {
             System.out.println();
             this.lastItem = item;
         }
+        System.out.println("-".repeat(50));
     }
 }
