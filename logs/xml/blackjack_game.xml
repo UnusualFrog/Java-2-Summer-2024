@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<blackjackGame>
+    <currentDeck/>
+    <dealer>
+        <currentHand/>
+    </dealer>
+    <player>
+        <betMoney>100.0</betMoney>
+        <currentHand/>
+    </player>
+    <score>0.0</score>
+</blackjackGame>
