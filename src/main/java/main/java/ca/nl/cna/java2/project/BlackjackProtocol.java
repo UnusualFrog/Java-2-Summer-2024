@@ -2,60 +2,34 @@ package main.java.ca.nl.cna.java2.project;
 
 public class BlackjackProtocol {
     private static final int START_GAME = 0;
-    private static final int SENTKNOCKKNOCK = 1;
-    private static final int SENTCLUE = 2;
-    private static final int ANOTHER = 3;
-
-    private static final int NUMJOKES = 5;
+    private static final int PLAYER_TURN = 1;
+    private static final int DEALER_TURN = 2;
+    private static final int END_GAME = 3;
 
     private int state = START_GAME;
-    private int currentJoke = 0;
-
-    private String[] clues = {"Turnip", "Little Old Lady", "Atch", "Who", "Who"};
-    private String[] answers = {"Turnip the heat, it's cold in here!",
-            "I didn't know you could yodel!",
-            "Bless you!",
-            "Is there an owl in here?",
-            "Is there an echo in here?"};
 
     public String processInput(String theInput) {
         String theOutput = null;
 
         if (state == START_GAME) {
             theOutput = "OPEN THE GAME!";
-//            state = SENTKNOCKKNOCK;
-        } else if (state == SENTKNOCKKNOCK) {
-            if (theInput.equalsIgnoreCase("Who's there?")) {
-                theOutput = clues[currentJoke];
-                state = SENTCLUE;
-            } else {
-                theOutput = "You're supposed to say \"Who's there?\"! " +
-                        "Try again. Knock! Knock!";
-            }
-        } else if (state == SENTCLUE) {
-            if (theInput.equalsIgnoreCase(clues[currentJoke] + " who?")) {
-                theOutput = answers[currentJoke] + " Want another? (y/n)";
-                state = ANOTHER;
-            } else {
-                theOutput = "You're supposed to say \"" +
-                        clues[currentJoke] +
-                        " who?\"" +
-                        "! Try again. Knock! Knock!";
-                state = SENTKNOCKKNOCK;
-            }
-        } else if (state == ANOTHER) {
-            if (theInput.equalsIgnoreCase("y")) {
-                theOutput = "Knock! Knock!";
-                if (currentJoke == (NUMJOKES - 1))
-                    currentJoke = 0;
-                else
-                    currentJoke++;
-                state = SENTKNOCKKNOCK;
-            } else {
-                theOutput = "Bye.";
-                state = START_GAME;
-            }
+
+            // If the input is a balance greater than 0
+            state = PLAYER_TURN;
+        } else if (state == PLAYER_TURN) {
+
+            // If bust or stand move to dealer turn
+            state = DEALER_TURN;
+        } else if (state == DEALER_TURN) {
+
+            // Always go to end game from dealer turn
+            state = END_GAME;
+        } else if (state == END_GAME) {
+
+            // Start new game if player has money
+            state = START_GAME;
         }
+
         return theOutput;
     }
 }

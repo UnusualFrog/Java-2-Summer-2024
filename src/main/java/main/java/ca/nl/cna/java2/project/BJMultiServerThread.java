@@ -32,7 +32,7 @@ public class BJMultiServerThread extends Thread {
                 currentGame.getDealer().setCurrentHand(currentGame.getCurrentDeck().drawHand());
                 out.println("Player Hand: " + currentGame.getPlayer().getCurrentHand().printHand());
                 out.println("Dealer Hand: " + currentGame.getDealer().getCurrentHand().printHand());
-                marshalValue(currentGame, out);
+//                marshalValue(currentGame, out);
             }
 
             // Continue to receive and respond to requests until the protocol returns "Bye"
