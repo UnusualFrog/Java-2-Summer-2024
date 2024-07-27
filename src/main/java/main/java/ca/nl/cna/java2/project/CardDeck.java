@@ -25,7 +25,7 @@ public class CardDeck {
         discardPile = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
             for (int j = 2; j < 15; j++) {
-                currentDeck.add(new PlayingCard(j, PlayingCard.Suit.values()[i]));
+                currentDeck.add(new PlayingCard(j, PlayingCard.Suit.values()[i], false));
             }
         }
     }
@@ -64,7 +64,7 @@ public class CardDeck {
      */
     public Hand drawHand() {
         ArrayList<PlayingCard> newHand = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 2; i++) {
             newHand.add(this.drawCard());
         }
         return new Hand(newHand);

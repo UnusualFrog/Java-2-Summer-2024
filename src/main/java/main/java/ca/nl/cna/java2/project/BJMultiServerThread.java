@@ -23,7 +23,7 @@ public class BJMultiServerThread extends Thread {
 
             // Protocol for managing game state based on requests and responses
             BlackjackProtocol bjp = new BlackjackProtocol();
-            outputLine = bjp.processInput(null);
+            outputLine = bjp.processInput(null, currentGame);
 
             // Send initial response to client
             out.println(outputLine);
@@ -37,7 +37,7 @@ public class BJMultiServerThread extends Thread {
 
             // Continue to receive and respond to requests until the protocol returns "Bye"
             while ((inputLine = in.readLine()) != null) {
-                outputLine = bjp.processInput(inputLine);
+                outputLine = bjp.processInput(inputLine, currentGame);
                 out.println(outputLine);
 
                 if (outputLine.equals("Bye")) break;

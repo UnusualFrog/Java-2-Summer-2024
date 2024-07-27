@@ -22,6 +22,39 @@ public class Hand {
         this.currentHand = currentHand;
     }
 
+    public void addToHand(PlayingCard new_card) {
+        this.currentHand.add(new_card);
+    }
+
+    public void setFacedown(int index) {
+        PlayingCard original_card = this.currentHand.get(index);
+        original_card.faceDown = true;
+        this.currentHand.set(index, original_card);
+    }
+
+    public void setFaceup(int index) {
+        PlayingCard original_card = this.currentHand.get(index);
+        original_card.faceDown = false;
+        this.currentHand.set(index, original_card);
+    }
+
+    public int calculateHandValue() {
+        int handValue = 0;
+
+        for (PlayingCard card : this.currentHand) {
+            handValue += card.getValue();
+        }
+        return handValue;
+    }
+
+    public boolean isBust() {
+        return this.calculateHandValue() > 21;
+    }
+
+    public boolean isBlackjack() {
+        return this.calculateHandValue() == 21;
+    }
+
     /**
      * Returns a string representation of the current hand
      *

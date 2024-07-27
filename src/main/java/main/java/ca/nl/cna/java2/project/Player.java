@@ -10,10 +10,12 @@ import java.net.UnknownHostException;
 public class Player {
     private Hand currentHand;
     private float betMoney;
+    private float currentBet;
 
     public Player() {
         currentHand = new Hand();
         betMoney = 100;
+        currentBet = 0;
     }
 
     public Hand getCurrentHand() {
@@ -30,6 +32,14 @@ public class Player {
 
     public void setBetMoney(float betMoney) {
         this.betMoney = betMoney;
+    }
+
+    public float getCurrentBet() {
+        return currentBet;
+    }
+
+    public void setCurrentBet(float currentBet) {
+        this.currentBet = currentBet;
     }
 
     public static void main(String[] args) throws IOException {

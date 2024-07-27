@@ -14,7 +14,11 @@ public class BlackjackGame {
         currentDeck = new CardDeck();
         currentDeck.shuffleDeck();
         player = new Player();
+        player.setCurrentHand(currentDeck.drawHand());
         dealer = new Dealer();
+        dealer.getCurrentHand().addToHand(currentDeck.drawCard());
+        dealer.getCurrentHand().addToHand(currentDeck.drawCard());
+        dealer.getCurrentHand().setFacedown(0);
     }
 
     public Player getPlayer() {

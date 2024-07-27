@@ -9,6 +9,7 @@ import java.io.PrintStream;
 public class PlayingCard {
     int value;
     Suit suit;
+    boolean faceDown;
     /**
      * Enumeration representing the possible suits for a card
      * */
@@ -17,10 +18,10 @@ public class PlayingCard {
     /**
      * Constant values representing the numeric value of special case card values
      * */
-    public static final int ACE = 14;
-    public static final int KING = 13;
-    public static final int QUEEN = 12;
-    public static final int JACK = 11;
+    public static final int ACE = 11;
+    public static final int KING = 10;
+    public static final int QUEEN = 10;
+    public static final int JACK = 10;
 
     /**
      * Constructor to create a card instance with a suit and a value
@@ -28,7 +29,7 @@ public class PlayingCard {
      * @param value int from 2-14 representing the number value of the card. Values outside the range will default to 2
      * @param suit enumerable from the class enumeration of suits, representing one of the four card suits. Defaults to DIAMONDS if suit does not exist in the Suit enum
      * */
-    public PlayingCard(int value, Suit suit) {
+    public PlayingCard(int value, Suit suit, boolean faceDown) {
         if (value < 2 || value > 14){
             value = 2;
         }
@@ -40,6 +41,8 @@ public class PlayingCard {
         else{
             this.suit = Suit.DIAMONDS;
         }
+
+        this.faceDown = faceDown;
     }
 
     /**
@@ -112,6 +115,9 @@ public class PlayingCard {
      * @return string containing the symbol representing the value of the card followed by the symbol representing the suit
      * */
     public String toString(){
+        if (this.faceDown == true) {
+            return "? ?";
+        }
         return String.format("%s %s", getValueSymbol(this.value), getSuitSymbol(this.suit));
     }
 
