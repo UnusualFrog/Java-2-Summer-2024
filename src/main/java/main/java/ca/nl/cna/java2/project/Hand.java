@@ -40,10 +40,23 @@ public class Hand {
 
     public int calculateHandValue() {
         int handValue = 0;
+        int aceCount = 0;
 
         for (PlayingCard card : this.currentHand) {
-            handValue += card.getValue();
+            if (card.getValue() == 11 || card.getValue() == 12 || card.getValue() == 13) {
+                handValue += 10;
+            } else if (card.getValue() == 14) {
+                handValue += 11;
+                aceCount++;
+            } else {
+                handValue += card.getValue();
+            }
         }
+
+        while (handValue > 21 && aceCount > 0 ) {
+            handValue -= 10;
+        }
+
         return handValue;
     }
 

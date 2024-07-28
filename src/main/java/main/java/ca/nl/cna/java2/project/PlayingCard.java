@@ -18,10 +18,10 @@ public class PlayingCard {
     /**
      * Constant values representing the numeric value of special case card values
      * */
-    public static final int ACE = 11;
-    public static final int KING = 10;
-    public static final int QUEEN = 10;
-    public static final int JACK = 10;
+    public static final int ACE = 14;
+    public static final int KING = 13;
+    public static final int QUEEN = 12;
+    public static final int JACK = 11;
 
     /**
      * Constructor to create a card instance with a suit and a value
@@ -115,7 +115,7 @@ public class PlayingCard {
      * @return string containing the symbol representing the value of the card followed by the symbol representing the suit
      * */
     public String toString(){
-        if (this.faceDown == true) {
+        if (this.faceDown) {
             return "? ?";
         }
         return String.format("%s %s", getValueSymbol(this.value), getSuitSymbol(this.suit));

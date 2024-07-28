@@ -49,32 +49,46 @@ public class BlackJackConsole {
                 if (player.getCurrentHand().isBlackjack()) {
                     System.out.println("You got ★ BLACKJACK ★");
                     state = DEALER_TURN;
-                }
-
-                System.out.println("Hit or Stay: ");
-                try  {
-                    userInput = scanner.nextLine();
-                    if (Objects.equals(userInput, "Hit")) {
-
-                    } else if (Objects.equals(userInput, "Stay")) {
-                        state = DEALER_TURN;
-                    } else {
-                        throw new IllegalArgumentException("Value must be either 'Hit' or 'Stay'");
+                } else {
+                    System.out.println("Hit or Stay: ");
+                    try  {
+                        userInput = scanner.nextLine().toLowerCase();
+                        if (Objects.equals(userInput, "hit")) {
+                            player.getCurrentHand().addToHand(bjg.getCurrentDeck().drawCard());
+                            if (player.getCurrentHand().isBust()){
+                                System.out.println("☠ BUST ☠");
+                                state = DEALER_TURN;
+                            }
+                        } else if (Objects.equals(userInput, "stay")) {
+                            state = DEALER_TURN;
+                        } else {
+                            throw new IllegalArgumentException("Value must be either 'Hit' or 'Stay'");
+                        }
+                    } catch (Exception e) {
+                        System.err.println(e);
                     }
-                } catch (Exception e) {
-                    System.err.println(e);
                 }
-
-
-//                if () {
-//
-//                }
             } else if (state == DEALER_TURN) {
                 dealer.getCurrentHand().setFaceup(0);
                 System.out.println("Player Hand: " + player.getCurrentHand().printHand());
                 System.out.println("Dealer Hand: " + dealer.getCurrentHand().printHand());
 
-                state = END_GAME;
+                if (dealer.getCurrentHand().isBlackjack()) {
+                    System.out.println("Dealer got ★ BLACKJACK ★");
+                    state = END_GAME;
+                } else {
+                    if (dealer.getCurrentHand().calculateHandValue() <= 17) {
+                        dealer.getCurrentHand().addToHand(bjg.getCurrentDeck().drawCard());
+                        if (dealer.getCurrentHand().isBust()) {
+                            state = END_GAME;
+                        }
+                        System.out.println("Dealer Hit");
+                        System.out.println("Dealer Hand: " + dealer.getCurrentHand().printHand());
+                    }
+                    state = END_GAME;
+                }
+
+
             } else if (state == END_GAME) {
 
             } else {
