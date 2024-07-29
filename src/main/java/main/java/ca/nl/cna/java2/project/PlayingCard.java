@@ -94,15 +94,15 @@ public class PlayingCard {
     private static String getSuitSymbol(Suit cardSuit) {
         String suitSymbol;
         if (cardSuit == (PlayingCard.Suit.DIAMONDS)){
-            suitSymbol = "♦";
+            suitSymbol = "♦\uFE0F";
         }else if (cardSuit == Suit.HEARTS){
-            suitSymbol = "♥";
+            suitSymbol = "♥\uFE0F";
         }
         else if (cardSuit == Suit.CLUBS){
-            suitSymbol = "♣";
+            suitSymbol = "♣\uFE0F";
         }
         else if (cardSuit == Suit.SPADES){
-            suitSymbol = "♠";
+            suitSymbol = "♠\uFE0F";
         }
         else {
             suitSymbol = "E!";
@@ -116,7 +116,7 @@ public class PlayingCard {
      * */
     public String toString(){
         if (this.faceDown) {
-            return "? ?";
+            return "❔ ❔";
         }
         return String.format("%s %s", getValueSymbol(this.value), getSuitSymbol(this.suit));
     }

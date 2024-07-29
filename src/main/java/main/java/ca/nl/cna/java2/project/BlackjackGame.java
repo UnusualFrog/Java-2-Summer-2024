@@ -21,6 +21,17 @@ public class BlackjackGame {
         dealer.getCurrentHand().setFacedown(0);
     }
 
+    public void resetGame() {
+        currentDeck.shuffleDeck();
+        player.setCurrentHand(new Hand());
+        player.setCurrentHand(currentDeck.drawHand());
+
+        dealer.setCurrentHand(new Hand());
+        dealer.getCurrentHand().addToHand(currentDeck.drawCard());
+        dealer.getCurrentHand().addToHand(currentDeck.drawCard());
+        dealer.getCurrentHand().setFacedown(0);
+    }
+
     public Player getPlayer() {
         return player;
     }

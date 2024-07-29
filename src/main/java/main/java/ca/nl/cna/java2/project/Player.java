@@ -9,8 +9,8 @@ import java.net.UnknownHostException;
 
 public class Player {
     private Hand currentHand;
-    private float betMoney;
-    private float currentBet;
+    private int betMoney;
+    private int currentBet;
 
     public Player() {
         currentHand = new Hand();
@@ -26,19 +26,22 @@ public class Player {
         this.currentHand = currentHand;
     }
 
-    public float getBetMoney() {
+    public int getBetMoney() {
         return betMoney;
     }
 
-    public void setBetMoney(float betMoney) {
+    public void setBetMoney(int betMoney) {
         this.betMoney = betMoney;
+        if (this.betMoney < 0) {
+            this.betMoney = 0;
+        }
     }
 
-    public float getCurrentBet() {
+    public int getCurrentBet() {
         return currentBet;
     }
 
-    public void setCurrentBet(float currentBet) {
+    public void setCurrentBet(int currentBet) {
         this.currentBet = currentBet;
     }
 
