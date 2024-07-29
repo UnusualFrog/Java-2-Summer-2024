@@ -5,13 +5,15 @@ package main.java.ca.nl.cna.java2.project;
  *
  */
 
-public class JSONObject {
+import org.json.simple.JSONObject;
+
+public class ResponseJSONObject {
 
     //JSONObject
 
-    static org.json.simple.JSONObject getObject(String msg){
-        org.json.simple.JSONObject obj = new org.json.simple.JSONObject();
-        obj.put("string",msg);
+    static JSONObject getObject(String msg){
+        JSONObject obj = new JSONObject();
+        obj.put("string", msg);
 
         return obj;
     }

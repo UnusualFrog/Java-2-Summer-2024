@@ -1,5 +1,8 @@
 package main.java.ca.nl.cna.java2.project;
 
+import main.java.ca.nl.cna.java2.exercise.ex9_json.EchoJSONObject;
+import org.json.simple.JSONObject;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -39,7 +42,8 @@ public class BJMultiServerThread extends Thread {
             Player player = bjg.getPlayer();
             Dealer dealer = bjg.getDealer();
 
-            out.println("★ OPEN THE GAME ★");
+            JSONObject jsonObject = ResponseJSONObject.getObject("★ OPEN THE GAME ★");
+            out.println(jsonObject.toJSONString());
             while (state != EXIT_GAME) {
                 if (state == START_GAME) {
                     // Game starts by setting user bet
