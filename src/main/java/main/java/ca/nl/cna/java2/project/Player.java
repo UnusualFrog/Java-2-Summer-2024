@@ -60,17 +60,21 @@ public class Player {
             String fromUser;
 
             while ((fromServer = in.readLine()) != null) {
-                // Handle server response
-                System.out.println("Server: " + fromServer);
-                // End connection if server replies with "bye"
-                if (fromServer.equals("Bye.")) break;
 
-                // Handle user input
-//                fromUser = stdIn.readLine();
-//                if (fromUser != null) {
-//                    System.out.println("Client: " + fromUser);
-//                    out.println(fromUser);
-//                }
+                if (!fromServer.equals("continue")) {
+                    // Handle server response
+                    System.out.println(fromServer);
+                    // End connection if server replies with "bye"
+                    if (fromServer.equals("Bye.")) break;
+                } else {
+                    // Handle user input
+                    fromUser = stdIn.readLine();
+                    if (fromUser != null) {
+//                        System.out.println("Client: " + fromUser);
+                        out.println(fromUser);
+                    }
+                }
+
             }
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host " + hostName);
