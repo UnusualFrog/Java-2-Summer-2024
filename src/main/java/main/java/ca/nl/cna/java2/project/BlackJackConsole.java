@@ -133,6 +133,7 @@ public class BlackJackConsole {
                 }
 
             } else if (state == DETERMINE_WINNER) {
+                // Output winner and update bet money accordingly
                 System.out.println("----- Determine Result -----");
                 if (player.getCurrentHand().isBust()) {
                     System.out.println("☠️ Player Loses \uD83D\uDCB0" + player.getCurrentBet() + "☠️");
@@ -156,6 +157,8 @@ public class BlackJackConsole {
                 } else {
                     System.out.println("\uD83D\uDE10 Player Ties Dealer \uD83D\uDE10");
                 }
+
+                // Return to initial game state, with deck shuffled and hands reset
                 System.out.println("Play again?");
                 state = START_GAME;
                 bjg.resetGame();
