@@ -128,6 +128,7 @@ public class BlackJackConsole {
                         }
                     } else {
                         // Move to determine winner if dealer hand greater than 16
+                        System.out.println("Dealer Stay");
                         state = DETERMINE_WINNER;
                     }
                 }
