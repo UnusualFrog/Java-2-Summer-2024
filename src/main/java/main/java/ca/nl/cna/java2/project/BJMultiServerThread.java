@@ -191,7 +191,6 @@ public class BJMultiServerThread extends Thread {
                     state = START_GAME;
                     bjg.resetGame();
                 }
-
             }
 
             // Close client connection and end game
