@@ -3,9 +3,16 @@ package main.java.ca.nl.cna.java2.project;
 import java.util.Objects;
 import java.util.Scanner;
 
+/**
+ * Class for running a game of Black Jack in console
+ * Contains logic to handle the game states and flow of execution between game states
+ *
+ * @author Noah.Forward
+ * */
 public class BlackJackConsole {
     /**
      * Constant values representing the numeric value of the game state
+     * Used as a basis for constructing thread-based version of the game
      * */
     private static final int START_GAME = 0;
     private static final int PLAYER_TURN = 1;
@@ -97,7 +104,7 @@ public class BlackJackConsole {
                 // Dealer will hit until their hand is over 16
                 System.out.println("----- Dealer Turn -----");
                 // Reveal dealer's face down card
-                dealer.getCurrentHand().setFaceup(0);
+                dealer.getCurrentHand().setFaceUp(0);
                 System.out.println("Player Hand: " + player.getCurrentHand().printHand());
                 System.out.println("Dealer Hand: " + dealer.getCurrentHand().printHand());
 

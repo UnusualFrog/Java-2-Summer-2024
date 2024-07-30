@@ -1,24 +1,34 @@
 package main.java.ca.nl.cna.java2.project;
 
-import main.java.ca.nl.cna.java2.exercise.ex9_json.EchoJSONObject;
 import org.json.simple.JSONObject;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import java.io.*;
 import java.net.Socket;
 import java.util.Objects;
-import java.util.Scanner;
 
+/**
+ * Class for running a thread based game of Black Jack
+ * Contains logic to handle the game states and flow of execution between game states
+ * This class extends the Thread class, allowing it to be run as a separate thread.
+ *
+ * @author Noah.Forward
+ * */
 public class BJMultiServerThread extends Thread {
     private Socket clientSocket = null;
 
+    /**
+     * Constructor for BJMultiServerThread.
+     *
+     * @param clientSocket the socket connected to the client
+     */
     public BJMultiServerThread(Socket clientSocket) {
         super("BJMultiServerThread");
         this.clientSocket = clientSocket;
     }
 
+    /**
+     * Constant values representing the numeric value of the game state
+     * */
     private static final int START_GAME = 0;
     private static final int PLAYER_TURN = 1;
     private static final int DEALER_TURN = 2;
@@ -26,13 +36,14 @@ public class BJMultiServerThread extends Thread {
     private static final int EXIT_GAME = 4;
 
 
+    /**
+     * The run method is executed when the thread is started.
+     * It handles the game logic and communication with the client.
+     */
     public void run() {
-
         // Create Reader and Writer streams for client requests and responses
         try (PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true); BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));) {
-            String inputLine, outputLine;
 
-            Scanner scanner = new Scanner(System.in);
             BlackjackGame bjg = new BlackjackGame();
 
             // Set initial game state
@@ -119,12 +130,12 @@ public class BJMultiServerThread extends Thread {
                 } else if (state == DEALER_TURN) {
                     // Dealer will hit until their hand is over 16
                     out.println(ResponseJSONObject.getObject("----- Dealer Turn -----"));
-// Reveal dealer's face down card
-                    dealer.getCurrentHand().setFaceup(0);
+                    // Reveal dealer's face down card
+                    dealer.getCurrentHand().setFaceUp(0);
                     out.println(ResponseJSONObject.getObject("Player Hand: " + player.getCurrentHand().printHand()));
                     out.println(ResponseJSONObject.getObject("Dealer Hand: " + dealer.getCurrentHand().printHand()));
 
-// Move to determine winner if dealer gets blackjack
+                    // Move to determine winner if dealer gets blackjack
                     if (dealer.getCurrentHand().isBlackjack()) {
                         out.println(ResponseJSONObject.getObject("⭐Dealer got ★ BLACKJACK ⭐"));
                         state = DETERMINE_WINNER;
