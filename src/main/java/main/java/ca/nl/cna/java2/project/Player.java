@@ -1,11 +1,15 @@
 package main.java.ca.nl.cna.java2.project;
 
+import org.json.simple.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class Player {
     private Hand currentHand;
@@ -57,15 +61,29 @@ public class Player {
 
             // Store server and user input respectively
             String fromServer;
+            String fromServerMsg;
             String fromUser;
 
-            while ((fromServer = in.readLine()) != null) {
 
-                if (!fromServer.equals("continue")) {
+            JSONParser parser = new JSONParser();
+            JSONObject jsonResponse;
+
+
+            while ((fromServer = in.readLine()) != null) {
+                try {
+                    jsonResponse = (JSONObject) parser.parse(fromServer);
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+                fromServerMsg = (String) jsonResponse.get("string");
+
+                if (!fromServerMsg.equals("continue")) {
                     // Handle server response
-                    System.out.println(fromServer);
+//                    System.out.println(fromServer);
+
+                    System.out.println(fromServerMsg);
                     // End connection if server replies with "bye"
-                    if (fromServer.equals("Bye.")) break;
+                    if (fromServerMsg.equals("Bye.")) break;
                 } else {
                     // Handle user input
                     fromUser = stdIn.readLine();
