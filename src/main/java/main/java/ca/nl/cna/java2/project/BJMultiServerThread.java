@@ -88,7 +88,7 @@ public class BJMultiServerThread extends Thread {
                         player.setCurrentBet(userBet);
                         state = PLAYER_TURN;
                     } else {
-                        System.err.println("⚠️ Insufficient Bet Money ⚠️");
+                        out.println(ResponseJSONObject.getObject("⚠️ Insufficient Bet Money ⚠️"));
                     }
 
                 } else if (state == PLAYER_TURN) {
